@@ -1,0 +1,15 @@
+main {
+  display: flex;
+  background-image: url("https://picsum.photos/1600/900");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  text-align: center;
+  justify-content: space-evenly;
+
+}
+
+.card-content{
+    background-color: #E7E6F5;
+}
