@@ -1,10 +1,5 @@
 import React from "react";
 import {
-  Card,
-  CardMedia,
-  CardContent,
-  CardActions,
-  IconButton,
   Typography,
   Container,
   Box,
@@ -16,12 +11,10 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 
 import { initialState } from "../utils/constant";
-import { useHistory } from "react-router-dom";
 import Header from "../components/Header";
 import { useAuth } from "../utils/AuthContext";
 
 export default function CardItem({ card = initialState.Card }) {
-  const history = useHistory();
   const {currentUser} = useAuth();
 
   return (

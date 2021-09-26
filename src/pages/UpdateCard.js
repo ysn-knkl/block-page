@@ -25,6 +25,7 @@ import Header from "../components/Header";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import { successToastify, failToastify } from "../utils/customToastify";
 
 const theme = createTheme();
 
@@ -43,7 +44,6 @@ export default function Signup() {
   useEffect(() => {
     getCards("cardId", id).then(function (result) {
       setCardList(result);
-      
     });
   }, []);
 
@@ -70,7 +70,12 @@ export default function Signup() {
       imgLink: imgLinkRef.current.value,
       content: contentRef.current.value,
     };
-    updateCard(newCard,);
+    try {
+      updateCard(newCard);
+      successToastify("Updated Successfully");
+    } catch {
+      failToastify("Updated Successfully");
+    }
     history.push("/");
   }
 
@@ -85,89 +90,83 @@ export default function Signup() {
         <Grid container justifyContent="center">
           <Grid item>
             <React.Fragment>
-              
               {cardList[0] && (
-                  <Container sx={{ py: 2, }} maxWidth="sm">
-                    
-                    <Grid align="center">
-                      <Grid item md={12}>
-                        <Card
+                <Container sx={{ py: 2 }} maxWidth="sm">
+                  <Grid align="center">
+                    <Grid item md={12}>
+                      <Card
+                        sx={{
+                          height: "100%",
+                          display: "flex",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <CardMedia
+                          component="img"
+                          image={cardList[0].imgLink}
+                          alt="random"
+                        />
+                        <CardContent
+                          className="card-content"
                           sx={{
                             height: "100%",
                             display: "flex",
                             flexDirection: "column",
                           }}
                         >
-                          <CardMedia
-                            component="img"
-                            image={cardList[0].imgLink}
-                            alt="random"
-                          />
-                          <CardContent
-                            className="card-content"
+                          <Typography
+                            variant="h6"
                             sx={{
-                              height: "100%",
-                              display: "flex",
-                              flexDirection: "column",
+                              color: "#046582",
+                              textTransform: "uppercase",
+                              margin: "15px",
+                              fontFamily: "Helvetica Neue",
+                              fontWeight: "bold",
                             }}
                           >
-                            <Typography
-                              variant="h6"
-                              sx={{
-                                color: "#046582",
-                                textTransform: "uppercase",
-                                margin: "15px",
-                                fontFamily: "Helvetica Neue",
-                                fontWeight: "bold",
-                              }}
-                            >
-                              {cardList[0].title}
-                            </Typography>
-                            <Typography
-                              variant="subtitle2"
-                              color="text.secondary"
-                            >
-                              {cardList[0].subheader}
-                            </Typography>
-                            <Typography
-                              variant="subtitle1"
-                              sx={{ fontSize: "0.9rem" }}
-                              textAlign="left"
-                            >
-                              {cardList[0].content}
-                            </Typography>
-                          </CardContent>
-                          <CardContent>
-                            <Typography
-                              variant="h6"
-                              color="text.secondary"
-                              textAlign="left"
-                            >
-                              <AccountCircleIcon fontSize="medium" />
-                              {cardList[0].email}
-                            </Typography>
-                          </CardContent>
-                          <CardActions disableSpacing>
-                            <IconButton aria-label="add to favorites">
-                              <FavoriteIcon />
-                            </IconButton>
-                            <IconButton aria-label="share">
-                              <ChatBubbleOutlineIcon />
-                            </IconButton>
-                          </CardActions>
-                        </Card>
-                      </Grid>
+                            {cardList[0].title}
+                          </Typography>
+                          <Typography
+                            variant="subtitle2"
+                            color="text.secondary"
+                          >
+                            {cardList[0].subheader}
+                          </Typography>
+                          <Typography
+                            variant="subtitle1"
+                            sx={{ fontSize: "0.9rem" }}
+                            textAlign="left"
+                          >
+                            {cardList[0].content}
+                          </Typography>
+                        </CardContent>
+                        <CardContent>
+                          <Typography
+                            variant="h6"
+                            color="text.secondary"
+                            textAlign="left"
+                          >
+                            <AccountCircleIcon fontSize="medium" />
+                            {cardList[0].email}
+                          </Typography>
+                        </CardContent>
+                        <CardActions disableSpacing>
+                          <IconButton aria-label="add to favorites">
+                            <FavoriteIcon />
+                          </IconButton>
+                          <IconButton aria-label="share">
+                            <ChatBubbleOutlineIcon />
+                          </IconButton>
+                        </CardActions>
+                      </Card>
                     </Grid>
-                  </Container>
-              
+                  </Grid>
+                </Container>
               )}
             </React.Fragment>
           </Grid>
           <Grid item>
-            <Container
-              sx={{ background: "white", marginTop: 2 }}
-              maxWidth="xs"
-            >
+            <Container sx={{ background: "white", marginTop: 2 }} maxWidth="xs">
               <CssBaseline />
               <Box
                 sx={{
@@ -180,7 +179,7 @@ export default function Signup() {
                 <Typography component="h1" variant="h5">
                   Update Card
                 </Typography>
-                <Box component="form" onSubmit={handleUpdate} >
+                <Box component="form" onSubmit={handleUpdate}>
                   <InputLabel id="select-label">Age</InputLabel>
                   <Select
                     labelId="select-label"

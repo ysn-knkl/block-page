@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { auth } from "./firebase";
 import { db } from "./firebase";
+import { successToastify } from "./customToastify";
 
 const AuthContext = React.createContext();
 
@@ -15,6 +16,7 @@ export function AuthProvider({ children }) {
     db.collection("CardItem")
       .add(card)
       .then((docRef) => {});
+      successToastify("Added succesfully");
   }
 
   function updateCard(card) {
@@ -22,6 +24,7 @@ export function AuthProvider({ children }) {
       .doc(card.id)
       .set(card)
       .then((docRef) => {});
+      successToastify("Card updated succesfully");
   }
 
   async function getCards(where, value) {
@@ -54,6 +57,7 @@ export function AuthProvider({ children }) {
         doc.ref.delete()
       });
     });
+    successToastify("Card deleted succesfully");
   }
 
   function signup(email, password) {

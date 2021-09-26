@@ -6,6 +6,8 @@ import {initialState} from "./utils/constant";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import "./App.css"
+import { ToastContainer } from "react-toastify";
+
 
 const store = createStore(reducer, initialState);
 
@@ -14,6 +16,7 @@ const App = () => {
     <Provider className="provider" store={store}>
       <CssBaseline />
       <AppRouter />
+      <ToastContainer />
     </Provider>
   );
 };

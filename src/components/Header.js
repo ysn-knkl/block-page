@@ -19,6 +19,8 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { makeStyles } from "@mui/styles";
 import { useAuth } from "../utils/AuthContext";
 import { useHistory } from "react-router-dom";
+import { successToastify, failToastify} from "../utils/customToastify";
+
 
 const useStyles = makeStyles({
   root: {
@@ -52,7 +54,13 @@ export default function Header() {
   };
 
   const handleLogout = () => {
-    logout();
+    try{
+      logout();
+      successToastify("Log out successfully")
+    }catch{
+      failToastify("Log out failed")
+      
+    }
   };
 
   const handleBtnClick = (value) => {
@@ -63,7 +71,7 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="statik">
+      <AppBar position="static">
         <Toolbar className={classes.root}>
           <Typography
             variant="h6"

@@ -16,6 +16,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useAuth } from "../utils/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import Header from "../components/Header";
+import { successToastify, failToastify } from "../utils/customToastify";
+
 
 function Copyright(props) {
   return (
@@ -50,9 +52,10 @@ export default function Signup() {
       setLoading(true);
       setError("");
       await login(emailRef.current.value, passwordRef.current.value);
+      successToastify("Login Successfully");
       history.push("/");
     } catch {
-      setError("Failed to Log in");
+      failToastify("Login Failed");
     }
     setLoading(false);
   }
