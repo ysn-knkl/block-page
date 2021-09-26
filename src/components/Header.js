@@ -16,20 +16,31 @@ import { Link } from "react-router-dom";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from "@mui/styles";
 import { useAuth } from "../utils/AuthContext";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
     background: "#046582",
-    underline: "none"
+    underline: "none",
+  },
+  btn: {
+    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+    borderRadius: "50%",
+    border: 0,
+    color: "white",
+    height: 50,
+    padding: "0 30px",
+    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)"
   },
 });
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
   const { currentUser, logout } = useAuth();
-  const classes =useStyles();
+  const classes = useStyles();
+  const history = useHistory();
 
   const isMenuOpen = Boolean(anchorEl);
   const handleProfileMenuOpen = (event) => {
@@ -43,14 +54,17 @@ export default function Header() {
   const handleLogout = () => {
     logout();
   };
-  
+
+  const handleBtnClick = (value) => {
+    history.push(value);
+  };
 
   const menuId = "primary-search-account-menu";
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" >
-        <Toolbar  className={classes.root}>
+      <AppBar position="statik">
+        <Toolbar className={classes.root}>
           <Typography
             variant="h6"
             noWrap
@@ -58,7 +72,7 @@ export default function Header() {
             sx={{ display: { xs: "none", sm: "block" } }}
             align="center"
           >
-            You can do it
+            Expand Your
           </Typography>
 
           <Box sx={{ flexGrow: 1 }}>
@@ -101,79 +115,32 @@ export default function Header() {
 
         <Toolbar
           component="nav"
-          variant="dense"
-          sx={{ justifyContent: "space-evenly", overflowX: "auto" }}
+          variant="regular"
+          sx={{ justifyContent: "space-evenly", overflowX: "auto", background: 'linear-gradient(to right bottom, #046582, #658582)' }}
         >
           <Grid
             container
             maxWidth="lg"
             spacing={2}
             justifyContent="space-around"
-          >        
+          >
             <Grid item>
-              <Link to="/">General</Link>
+              <Button className={classes.btn} variant="secondary" onClick={()=> handleBtnClick("/")}>General</Button>
             </Grid>
             <Grid item>
-              <Link to="/technology">Technology</Link>
+              <Button className={classes.btn} variant="secondary" onClick={()=> handleBtnClick("camping")}>Camping</Button>
             </Grid>
             <Grid item>
-              <Link to="/camping">Camping</Link>
+              <Button className={classes.btn} variant="secondary" onClick={()=> handleBtnClick("/technology")}>Technology</Button>
             </Grid>
             <Grid item>
-              <Link to="/sports">Sports</Link>
+              <Button className={classes.btn} variant="secondary" onClick={()=> handleBtnClick("/sports")}>Sports</Button>
             </Grid>
             <Grid item>
-              <Link to="/theanother">The Another</Link>
+              <Button className={classes.btn} variant="secondary" onClick={()=> handleBtnClick("/theanother")}>The Another</Button>
             </Grid>
+           
           </Grid>
-
-          {/* <Link
-            color="inherit"
-            variant="button"
-            underline="none"
-            to="/"
-            sx={{ flexShrink: 0 }}
-          >
-            General
-          </Link>
-
-          <Link
-            color="inherit"
-            variant="button"
-            underline="none"
-            to="/technology"
-            sx={{ flexShrink: 0 }}
-          >
-            Technology
-          </Link>
-          <Link
-            color="inherit"
-            variant="button"
-            underline="none"
-            to="/camping"
-            sx={{ flexShrink: 0 }}
-          >
-            Camping
-          </Link>
-          <Link
-            color="inherit"
-            variant="button"
-            underline="none"
-            to="/sports"
-            sx={{ flexShrink: 0 }}
-          >
-            Sports
-          </Link>
-
-          <Link
-            color="inherit"
-            variant="button"
-            underline="none"
-            to="/theanother"
-            sx={{ flexShrink: 0 }}
-          >
-            The Another
-          </Link> */}
         </Toolbar>
       </AppBar>
 
@@ -187,13 +154,15 @@ export default function Header() {
           id={menuId}
           keepMounted
           transformOrigin={{
-            vertical: "start",
+            vertical: "bottom",
             horizontal: "right",
           }}
           open={isMenuOpen}
           onClose={handleMenuClose}
         >
-          <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+          <MenuItem onClick={handleMenuClose}>
+            <Link to="/profile">Profile</Link>
+          </MenuItem>
           <MenuItem onClick={handleMenuClose}>
             <Link to="/addItem">New Card</Link>
           </MenuItem>

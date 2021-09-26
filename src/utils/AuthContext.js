@@ -17,27 +17,32 @@ export function AuthProvider({ children }) {
       .then((docRef) => {});
   }
 
+  function updateCard(card) {
+    db.collection("CardItem")
+      .doc(card.id)
+      .set(card)
+      .then((docRef) => {});
+  }
+
   async function getCards(where, value) {
     const snapshot = await db
       .collection("CardItem")
       .where(where, "==", value)
       .get();
-
+    
     const documents = [];
-    snapshot.forEach((doc) => {
-      documents.splice(documents.length, 0, doc.data());
-    });
-    return documents;
+    documents.push(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
+    
+    return documents[0];
   }
 
   async function getCardsAll() {
     const snapshot = await db.collection("CardItem").get();
-
+        
     const documents = [];
-    snapshot.forEach((doc) => {
-      documents.splice(documents.length, 0, doc.data());
-    });
-    return documents;
+    documents.push(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
+    
+    return documents[0];
   }
 
   function deleteCard(value) {
@@ -46,7 +51,7 @@ export function AuthProvider({ children }) {
       .where("cardId", "==", value);
     jobskill_query.get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
-        doc.ref.delete();
+        doc.ref.delete()
       });
     });
   }
@@ -81,7 +86,8 @@ export function AuthProvider({ children }) {
     getCards,
     getCardsAll,
     logout,
-    deleteCard
+    deleteCard,
+    updateCard
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

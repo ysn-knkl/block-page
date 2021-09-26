@@ -30,12 +30,17 @@ export default function DetailCard() {
     });
   }, []);
 
-  async function handleDelete(){
-   await deleteCard(cardList[0].cardId)
+   const handleDelete = async () => {
+      await deleteCard(cardList[0].cardId)
     history.push("/")
   }
 
-  cardList && console.log(cardList);
+  function handleUpdate(){
+    history.push(`/update-blog/${cardList[0].cardId}`)
+
+  }
+
+  
   return (
     <React.Fragment>
       <Header />
@@ -122,7 +127,7 @@ export default function DetailCard() {
                 </Card>
               </Grid>
             </Grid>
-            {cardList[0].email == currentUser.email &&
+            {cardList[0].email === currentUser.email &&
             
             <Box container display="flex" justifyContent="space-around">
               <Button
@@ -132,6 +137,7 @@ export default function DetailCard() {
                   px:5,
                   m:2,
                 }}
+                onClick={handleUpdate}
               >
                 update
               </Button>

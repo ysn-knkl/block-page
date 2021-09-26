@@ -9,6 +9,8 @@ import Login from "../pages/Login";
 import AddItem from "../pages/AddItem";
 import ForgotPassword from "../pages/ForgotPassword";
 import DetailCard from "../pages/DetailCard";
+import UpdateCard from "../pages/UpdateCard";
+import Profile from "../pages/Profile";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AuthProvider } from "../utils/AuthContext";
 import PrivateRoute from "./PrivateRouter";
@@ -20,7 +22,9 @@ const AppRouter = () => {
         <Switch>
           <PrivateRoute path="/addItem" component={AddItem} />
           <PrivateRoute path="/forgot-password" component={ForgotPassword} />
+          <PrivateRoute path="/profile" component={Profile} />
           <PrivateRoute path="/detail/:id" component={DetailCard} />
+          <PrivateRoute path="/update-blog/:id" component={UpdateCard} />
           <Route path="/login" component={Login} />
           <Route path="/technology" component={Technology} />
           <Route path="/camping" component={Camping} />
