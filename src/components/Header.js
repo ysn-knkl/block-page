@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     borderRadius: "50%",
     border: 0,
     color: "white",
-    height: 50,
+    height: 40,
     padding: "0 30px",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)"
   },
@@ -72,21 +72,21 @@ export default function Header() {
             sx={{ display: { xs: "none", sm: "block" } }}
             align="center"
           >
-            Expand Your
+            Expand Your Skills
           </Typography>
 
-          <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ flexGrow: 1, pr:15 }}>
             <Typography variant="h4" align="center">
               -- ysn-knkl--
             </Typography>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "flex" } }}>
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
             >
-              <Badge badgeContent={4} color="error">
+              <Badge badgeContent={5} color="error">
                 <MailIcon />
               </Badge>
             </IconButton>
@@ -98,7 +98,7 @@ export default function Header() {
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
             <IconButton
               size="large"
               edge="end"
