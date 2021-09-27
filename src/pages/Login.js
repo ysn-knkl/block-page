@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   Avatar,
   Button,
@@ -28,7 +28,7 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" to="https://material-ui.com/">
+      <Link color="inherit" to="/">
         Your Website
       </Link>{" "}
       {new Date().getFullYear()}
@@ -48,6 +48,8 @@ export default function Signup() {
   async function handleSubmit(event) {
     event.preventDefault();
 
+   
+
     try {
       setLoading(true);
       setError("");
@@ -59,6 +61,11 @@ export default function Signup() {
     }
     setLoading(false);
   }
+
+
+
+  
+
 
   return (
     <React.Fragment>
@@ -108,10 +115,10 @@ export default function Signup() {
                 inputRef={passwordRef}
                 autoComplete="current-password"
               />
-              <FormControlLabel
+              {/* <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
-              />
+              /> */}
               <Button
                 type="submit"
                 fullWidth
