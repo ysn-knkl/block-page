@@ -17,6 +17,7 @@ import { useHistory } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
 import { uid } from "uid";
 import Header from "../components/Header";
+import { successToastify, failToastify } from "../utils/customToastify";
 
 const theme = createTheme();
 
@@ -29,6 +30,7 @@ export default function Signup() {
   const dispatch = useDispatch();
   const { addCard, currentUser } = useAuth();
   const history = useHistory();
+
 
   
   function handleSubmit(e) {
@@ -53,9 +55,12 @@ export default function Signup() {
       imgLink: imgLinkRef.current.value,
       content: contentRef.current.value,
     };
-    addCard(newCard);
+    try{
+      addCard(newCard);
+    }catch{
+      failToastify("Added Failed");
+    }
     history.push("/")
-    dispatch({ type: "ADD_ITEM", payload: newCard });
   }
 
   function handleChange(e) {
@@ -79,16 +84,16 @@ export default function Signup() {
           <Typography component="h1" variant="h5">
             Add Card
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate>
-            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <Box component="form" onSubmit={handleSubmit}>
+            <InputLabel id="select-label">Category</InputLabel>
             <Select
-              labelId="select-label"
-              id="select"
-              value={cardCategory}
-              label="Age"
               required
               fullWidth
               autoFocus
+              labelId="select-label"
+              id="select"
+              label="Category"
+              value={cardCategory}
               onChange={handleChange}
               inputRef={cardCategoryRef}
             >

@@ -74,7 +74,7 @@ export default function Signup() {
       updateCard(newCard);
       successToastify("Updated Successfully");
     } catch {
-      failToastify("Updated Successfully");
+      failToastify("Updated Failed");
     }
     history.push("/");
   }
@@ -88,12 +88,13 @@ export default function Signup() {
       <Header />
       <main>
         <Grid container justifyContent="center">
-          <Grid item>
-            <React.Fragment>
-              {cardList[0] && (
-                <Container sx={{ py: 2 }} maxWidth="sm">
+          {cardList[0] && (
+            <>
+              <CssBaseline />
+              <Grid item lg={3} md={6} sm={12} xs={12}>
+                <Container sx={{ py: 2 }}>
                   <Grid align="center">
-                    <Grid item md={12}>
+                    <Grid item >
                       <Card
                         sx={{
                           height: "100%",
@@ -104,7 +105,8 @@ export default function Signup() {
                         <CardMedia
                           component="img"
                           image={cardList[0].imgLink}
-                          alt="random"
+                          sx={{minHeight:"200px"}}
+                          alt="img"
                         />
                         <CardContent
                           className="card-content"
@@ -162,85 +164,92 @@ export default function Signup() {
                     </Grid>
                   </Grid>
                 </Container>
-              )}
-            </React.Fragment>
-          </Grid>
-          <Grid item>
-            <Container sx={{ background: "white", marginTop: 2 }} maxWidth="xs">
-              <CssBaseline />
-              <Box
-                sx={{
-                  marginTop: 2,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <Typography component="h1" variant="h5">
-                  Update Card
-                </Typography>
-                <Box component="form" onSubmit={handleUpdate}>
-                  <InputLabel id="select-label">Age</InputLabel>
-                  <Select
-                    labelId="select-label"
-                    id="select-label"
-                    value={cardCategory}
-                    label="Age"
-                    required
-                    fullWidth
-                    onChange={handleChange}
-                    inputRef={cardCategoryRef}
+              </Grid>
+           
+              <Grid item lg={3}>
+                <Container
+                  sx={{ background: "white", marginTop: 2 }}
+                  maxWidth="xs"
+                >
+                  <CssBaseline />
+                  <Box
+                    sx={{
+                      marginTop: 2,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
                   >
-                    <MenuItem value="Technology">Technology</MenuItem>
-                    <MenuItem value="Camping">Camping</MenuItem>
-                    <MenuItem value="Sports">Sports</MenuItem>
-                    <MenuItem value="TheAnother">The Another</MenuItem>
-                  </Select>
+                    <Typography component="h1" variant="h5" sx={{ py: 2 }}>
+                      Update Card
+                    </Typography>
+                    <Box component="form" onSubmit={handleUpdate}>
+                      <InputLabel id="select-label">Category</InputLabel>
+                      <Select
+                        required
+                        fullWidth
+                        id="select-label"
+                        labelId="select-label"
+                        defaultValue={cardList[0].cardCategory}
+                        value={cardCategory}
+                        onChange={handleChange}
+                        inputRef={cardCategoryRef}
+                      >
+                        <MenuItem value="Technology">Technology</MenuItem>
+                        <MenuItem value="Camping">Camping</MenuItem>
+                        <MenuItem value="Sports">Sports</MenuItem>
+                        <MenuItem value="TheAnother">The Another</MenuItem>
+                      </Select>
 
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="title"
-                    label="Title"
-                    name="text"
-                    inputRef={titleRef}
-                  />
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="imgLink"
-                    label="Image URL"
-                    type="url"
-                    id="imgLink"
-                    inputRef={imgLinkRef}
-                  />
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="content"
-                    label="Content"
-                    type="text"
-                    id="content"
-                    multiline
-                    rows={15}
-                    inputRef={contentRef}
-                  />
-                  <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
-                    disabled={false}
-                  >
-                    Update
-                  </Button>
-                </Box>
-              </Box>
-            </Container>
-          </Grid>
+                      <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="title"
+                        defaultValue={cardList[0].title}
+                        label="Title"
+                        name="text"
+                        inputRef={titleRef}
+                      />
+                      <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="imgLink"
+                        defaultValue={cardList[0].imgLink}
+                        label="Link"
+                        type="url"
+                        name="imgLink"
+                        inputRef={imgLinkRef}
+                      />
+                      <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="content"
+                        defaultValue={cardList[0].content}
+                        label="Content"
+                        type="text"
+                        id="content"
+                        multiline
+                        rows={15}
+                        inputRef={contentRef}
+                      />
+                      <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                        disabled={false}
+                      >
+                        Update
+                      </Button>
+                    </Box>
+                  </Box>
+                </Container>
+              </Grid>
+            </>
+          )}
         </Grid>
       </main>
     </ThemeProvider>
