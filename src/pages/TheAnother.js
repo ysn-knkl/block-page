@@ -12,7 +12,7 @@ const TheAnother = () => {
     getCards("cardCategory","TheAnother").then(function (result) {
       setCardList(result);
     });
-  }, []);
+  }, [getCards]);
 
   return (
     <>

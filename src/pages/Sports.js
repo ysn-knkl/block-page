@@ -12,7 +12,7 @@ const Sports = () => {
     getCards("cardCategory","Sports").then(function (result) {
       setCardList(result);
     });
-  }, []);
+  }, [getCards]);
   return (
     <>
       <Header />

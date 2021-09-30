@@ -9,10 +9,14 @@ const GeneralBlock = () => {
   const { getCardsAll } = useAuth();
 
   useEffect(() => {
-    getCardsAll().then(function (result) {
-      setCardList(result);
+
+    getCardsAll().then((result) => {
+        setCardList(result);
+      
     });
-  }, []);
+
+    
+  }, [getCardsAll]);
 
   return (
     <>

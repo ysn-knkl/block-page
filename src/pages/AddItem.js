@@ -12,12 +12,11 @@ import {
 } from "@mui/material/";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
 import { uid } from "uid";
 import Header from "../components/Header";
-import { successToastify, failToastify } from "../utils/customToastify";
+import {failToastify } from "../utils/customToastify";
 
 const theme = createTheme();
 
@@ -27,7 +26,6 @@ export default function Signup() {
   const contentRef = useRef();
   const cardCategoryRef = useRef();
   const [cardCategory, setCardCategory] = useState("");
-  const dispatch = useDispatch();
   const { addCard, currentUser } = useAuth();
   const history = useHistory();
 

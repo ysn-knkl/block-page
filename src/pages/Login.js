@@ -1,10 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import {
   Avatar,
   Button,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Grid,
   Box,
   Typography,
@@ -12,12 +10,10 @@ import {
   Alert,
 } from "@mui/material/";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-
 import { useAuth } from "../utils/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import Header from "../components/Header";
 import { successToastify, failToastify } from "../utils/customToastify";
-
 
 function Copyright(props) {
   return (
@@ -47,9 +43,6 @@ export default function Signup() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
-   
-
     try {
       setLoading(true);
       setError("");
@@ -62,16 +55,14 @@ export default function Signup() {
     setLoading(false);
   }
 
-
-
-  
-
-
   return (
     <React.Fragment>
       <Header />
       <main>
-        <Container sx={{ background: "white", marginTop: 8, height: "100%" }} maxWidth="xs">
+        <Container
+          sx={{ background: "white", marginTop: 8, height: "100%" }}
+          maxWidth="xs"
+        >
           <Box
             sx={{
               paddingTop: 8,

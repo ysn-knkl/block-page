@@ -12,7 +12,7 @@ const Camping = () => {
     getCards("cardCategory","Camping").then(function (result) {
       setCardList(result);
     });
-  }, []);
+  }, [getCards]);
   return (
     <>
       <Header />

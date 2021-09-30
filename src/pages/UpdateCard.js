@@ -45,7 +45,7 @@ export default function Signup() {
     getCards("cardId", id).then(function (result) {
       setCardList(result);
     });
-  }, []);
+  }, [getCards,id]);
 
   function handleUpdate(e) {
     e.preventDefault();

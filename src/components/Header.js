@@ -5,7 +5,6 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  Badge,
   MenuItem,
   Menu,
   Grid,
@@ -14,8 +13,6 @@ import {
 import { Link } from "react-router-dom";
 
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import { makeStyles } from "@mui/styles";
 import { useAuth } from "../utils/AuthContext";
 import { useHistory } from "react-router-dom";
@@ -28,9 +25,9 @@ const useStyles = makeStyles({
     underline: "none",
   },
   btn: {
-    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
     borderRadius: "50%",
-    border: 0,
+    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+    border: 1,
     color: "white",
     height: 40,
     padding: "0 30px",
@@ -71,7 +68,7 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar >
         <Toolbar className={classes.root}>
           <Typography
             variant="h6"
@@ -89,24 +86,6 @@ export default function Header() {
             </Typography>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "flex" } }}>
-            {/* <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={5} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
             <IconButton
               size="large"
               edge="end"

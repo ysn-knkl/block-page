@@ -12,7 +12,7 @@ const Technology = () => {
     getCards("cardCategory","Technology").then(function (result) {
       setCardList(result);
     });
-  }, []);
+  }, [getCards]);
 
   return (
     <>

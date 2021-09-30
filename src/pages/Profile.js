@@ -5,11 +5,6 @@ import {
   Box,
   Grid,
 } from "@mui/material";
-
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
-
 import { initialState } from "../utils/constant";
 import Header from "../components/Header";
 import { useAuth } from "../utils/AuthContext";

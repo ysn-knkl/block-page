@@ -4,8 +4,6 @@ import {
   Button,
   CssBaseline,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Box,
   Typography,
   Container,
@@ -13,7 +11,6 @@ import {
 } from "@mui/material/";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
 import { useAuth } from "../utils/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import Header from "../components/Header";

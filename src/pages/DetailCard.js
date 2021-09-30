@@ -28,7 +28,7 @@ export default function DetailCard() {
     getCards("cardId", id).then(function (result) {
       setCardList(result);
     });
-  }, []);
+  }, [getCards,id]);
 
    const handleDelete = async () => {
       await deleteCard(cardList[0].cardId)
