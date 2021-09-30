@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   btn: {
     borderRadius: "50%",
     background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-    border: 1,
+    border: 0,
     color: "white",
     height: 40,
     padding: "0 30px",
@@ -68,7 +68,7 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar >
+      <AppBar position="static">
         <Toolbar className={classes.root}>
           <Typography
             variant="h6"
