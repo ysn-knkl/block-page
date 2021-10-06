@@ -21,7 +21,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useHistory, useParams } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
 import { uid } from "uid";
-import Header from "../components/Header";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
@@ -85,7 +84,6 @@ export default function Signup() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header />
       <main>
         <Grid container justifyContent="center">
           {cardList[0] && (

@@ -13,7 +13,6 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import React, { useEffect, useState } from "react";
 import { useParams,useHistory } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
-import Header from "../components/Header";
 import { IconButton } from "@mui/material";
 import { Box } from "@mui/system";
 
@@ -43,7 +42,6 @@ export default function DetailCard() {
   
   return (
     <React.Fragment>
-      <Header />
       {cardList[0] && (
         <main>
           {/* Hero unit */}

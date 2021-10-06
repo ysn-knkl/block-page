@@ -12,7 +12,6 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useAuth } from "../utils/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import Header from "../components/Header";
 import { successToastify, failToastify } from "../utils/customToastify";
 
 function Copyright(props) {
@@ -57,7 +56,6 @@ export default function Signup() {
 
   return (
     <React.Fragment>
-      <Header />
       <main>
         <Container
           sx={{ background: "white", marginTop: 8, height: "100%" }}

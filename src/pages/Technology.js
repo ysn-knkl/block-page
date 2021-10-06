@@ -1,6 +1,5 @@
 import { Container, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
 import CardItem from "../components/CardItem";
 import { useAuth } from "../utils/AuthContext";
 
@@ -16,7 +15,6 @@ const Technology = () => {
 
   return (
     <>
-      <Header />
       <main>
       <Container sx={{ py: 2 }} maxWidth="xl" align="center">
         <Grid container spacing={3}>

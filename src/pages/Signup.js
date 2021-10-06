@@ -13,7 +13,6 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useAuth } from "../utils/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import Header from "../components/Header";
 import { successToastify, failToastify } from "../utils/customToastify";
 
 
@@ -68,7 +67,6 @@ export default function Signup() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header />
       <main>
       <Container sx={{ background: "white", marginTop: 8, height: "100%" }} maxWidth="xs">
         <CssBaseline />

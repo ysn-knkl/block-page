@@ -22,10 +22,9 @@ import { successToastify, failToastify} from "../utils/customToastify";
 const useStyles = makeStyles({
   root: {
     background: "#046582",
-    underline: "none",
   },
   btn: {
-    borderRadius: "50%",
+    borderRadius: "40%",
     background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
     border: 0,
     color: "white",
@@ -33,6 +32,10 @@ const useStyles = makeStyles({
     padding: "0 30px",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)"
   },
+  link: {
+    textDecoration: "none",
+    color: "black"
+  }
 });
 
 export default function Header() {
@@ -131,7 +134,7 @@ export default function Header() {
         </Toolbar>
       </AppBar>
 
-      {currentUser ? (
+      {currentUser?.email ? (
         <Menu
           anchorEl={anchorEl}
           anchorOrigin={{
@@ -148,12 +151,12 @@ export default function Header() {
           onClose={handleMenuClose}
         >
           <MenuItem onClick={handleMenuClose}>
-            <Link to="/profile">Profile</Link>
+            <Link to="/profile" className={classes.link}>Profile</Link>
           </MenuItem>
           <MenuItem onClick={handleMenuClose}>
-            <Link to="/addItem">New Card</Link>
+            <Link to="/addItem" className={classes.link} >New Card</Link>
           </MenuItem>
-          <MenuItem onClick={(handleMenuClose, handleLogout)}>Logout</MenuItem>
+          <MenuItem onClick={(handleMenuClose, handleLogout)} className={classes.link}>Logout</MenuItem>
         </Menu>
       ) : (
         <Menu
@@ -172,10 +175,10 @@ export default function Header() {
           onClose={handleMenuClose}
         >
           <MenuItem onClick={handleMenuClose}>
-            <Link to="/login">Login</Link>
+            <Link to="/login" className={classes.link}>Login</Link>
           </MenuItem>
           <MenuItem onClick={handleMenuClose}>
-            <Link to="/signup">Register</Link>
+            <Link to="/signup" className={classes.link}>Register</Link>
           </MenuItem>
         </Menu>
       )}

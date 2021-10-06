@@ -15,7 +15,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
 import { uid } from "uid";
-import Header from "../components/Header";
 import {failToastify } from "../utils/customToastify";
 
 const theme = createTheme();
@@ -67,7 +66,6 @@ export default function Signup() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header />
       <main>
       <Container sx={{ background: "white", marginTop: 2, height: "100%" }} maxWidth="xs">
         <CssBaseline />

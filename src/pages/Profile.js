@@ -6,7 +6,6 @@ import {
   Grid,
 } from "@mui/material";
 import { initialState } from "../utils/constant";
-import Header from "../components/Header";
 import { useAuth } from "../utils/AuthContext";
 
 export default function CardItem({ card = initialState.Card }) {
@@ -14,7 +13,6 @@ export default function CardItem({ card = initialState.Card }) {
 
   return (
     <>
-      <Header />
       <main>
         <Container sx={{ py: 2, my: "10%" }} maxWidth="xs" align="center">
           <Grid container justify="center">

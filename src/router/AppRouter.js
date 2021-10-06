@@ -14,11 +14,13 @@ import Profile from "../pages/Profile";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AuthProvider } from "../utils/AuthContext";
 import PrivateRoute from "./PrivateRouter";
+import Header from "../components/Header";
 
 const AppRouter = () => {
   return (
     <Router>
       <AuthProvider>
+        <Header />
         <Switch>
           <PrivateRoute path="/addItem" component={AddItem} />
           <PrivateRoute path="/forgot-password" component={ForgotPassword} />
